@@ -1,1 +1,1 @@
-export const SET_SOMETHING = 'fetchSomething';
+export const SET_POSTS = 'fetchSomething';

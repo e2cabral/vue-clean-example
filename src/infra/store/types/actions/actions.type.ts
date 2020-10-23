@@ -1,1 +1,1 @@
-export const GET_SOMETHING = 'getSomething';
+export const GET_POSTS = 'getSomething';
