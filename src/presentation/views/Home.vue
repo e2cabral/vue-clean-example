@@ -1,18 +1,32 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <ul>
+      <li v-for="post in posts" :key="post.id">
+        <strong>{{ post.title }}</strong><br>
+        {{ post.body }}<br>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
+import 'reflect-metadata';
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/main/components/HelloWorld.vue'; // @ is an alias to /src
+import { Post } from '@/domain/models/post-model';
+import GET_POSTS from '@/infra/store/types/actions/actions.type';
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
+@Component
+export default class Home extends Vue {
+  get posts(): Array<Post> {
+    return this.$store.getters.posts;
+  }
+
+  mounted() {
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.$store.dispatch(GET_POSTS);
+  }
+}
 </script>
