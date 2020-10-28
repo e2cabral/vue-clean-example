@@ -1,1 +1,2 @@
-const GET_POSTS = 'getSomething'; export default GET_POSTS;
+export const GET_POSTS = 'getPosts';
+export const GET_POST = 'getPost';
