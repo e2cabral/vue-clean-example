@@ -11,4 +11,14 @@ export class PostService {
       return new Error(error);
     }
   }
+
+  static async getPost(id: number): Promise<Post | Error> {
+    try {
+      const { data } = await axios.get(`/posts/${id}`);
+      return data;
+    } catch (error) {
+      console.error(error);
+      return new Error(error);
+    }
+  }
 }
